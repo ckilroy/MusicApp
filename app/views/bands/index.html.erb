@@ -1,0 +1,13 @@
+<h1> Band Index </h1>
+<% @bands.each do |band| %>
+  <form action="<%= band_url(band.id) %>" method="get">
+    <% form_authenticity_token %>
+  <button> <%= band.name %> </button>
+  </form>
+<% end %>
+
+<br/>
+<form action="<%= new_band_url %>" method="get">
+<%= authentic_token %>
+<button> Create New Band </button>
+</form>

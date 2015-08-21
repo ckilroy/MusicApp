@@ -1,0 +1,22 @@
+<h1> <%= "#{@track.song} Page" %> </h1>
+
+<form action="<%= edit_track_url(@track.id)  %>" method="get">
+<%= authentic_token %>
+<button> Edit Track </button>
+</form>
+
+<form action="<%= track_url(@track.id) %>" method="post">
+<input type="hidden" name="_method" value="delete">
+<%= authentic_token %>
+<button> Delete Track </button>
+</form>
+
+<br/>
+<%= @track.lyrics %>
+
+<br/>
+<br/>
+<form action="<%= album_url(@track.album.id) %>" method="get">
+<%= authentic_token %>
+<button> Back to "<%= @track.album.title %>" Album </button>
+</form>

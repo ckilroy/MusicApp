@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
     !!current_user #return the boolean value
   end
 
+  def require_current_user!
+    redirect_to new_session_url unless logged_in?
+  end
+
   def current_user
     return nil if session[:token].nil?
     #if there's no session[:token], no user is logged in

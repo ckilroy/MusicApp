@@ -1,0 +1,33 @@
+<h1> <%= "#{@album.title} Album Page" %> </h1>
+
+<form action="<%= edit_album_url(@album.id) %>" method="get">
+<%= authentic_token %>
+<button> Edit Album </button>
+</form>
+
+<form action="<%= album_url(@album.id) %>" method="post">
+<input type="hidden" name="_method" value="delete">
+<%= authentic_token %>
+<button> Delete Album </button>
+</form>
+
+<br/>
+<label for="all_tracks"> Tracks: </label>
+<% @album.tracks.each do |track| %>
+  <form action="<%= track_url(track.id)  %>" method="get" name="all_tracks">
+  <%= authentic_token %>
+  <button> <%= track.song %> </button>
+  </form>
+<% end %>
+
+<br/>
+<form action="<%= new_album_track_url(@album.id) %>" method="get">
+<%= authentic_token %>
+<button> Add New Track </button>
+</form>
+
+<br/>
+<form action="<%= band_url(@album.band.id)  %>" method="get">
+<%= authentic_token %>
+<button> Back to "<%= @album.band.name %>"'s Page </button>
+</form>
